@@ -1,4 +1,6 @@
 const { app, BrowserWindow, Notification } = require('electron');
+const isDev = !app.isPackaged;
+
 const path = require('path');
 
 function createWindow() {
@@ -14,6 +16,12 @@ function createWindow() {
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.webContents.openDevTools();
+}
+
+if (isDev) {
+  require('electron-reload')(__dirname, {
+    electron: path.join(__dirname, 'node_modules', 'bin', 'electron')
+  });
 }
 
 // app.on('ready', createWindow);

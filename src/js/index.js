@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 
-console.log('he');
+import Comp1 from './Comp1'
+
 
 ReactDOM
-  .render(<h1>This is react header</h1>, document.getElementById('pingMessenger'));
+  .render(<Comp1 />, document.getElementById('pingMessenger'));
