@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Notification } = require('electron');
+const { app, BrowserWindow, ipcMain, Notification } = require('electron');
 const isDev = !app.isPackaged;
 
 const path = require('path');
@@ -11,11 +11,13 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      preload: path.join(__dirname, './preload.js')
     },
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  mainWindow.webContents.openDevTools();
+
+  if (isDev) mainWindow.webContents.openDevTools();
 }
 
 if (isDev) {
@@ -26,6 +28,10 @@ if (isDev) {
 
 // app.on('ready', createWindow);
 app.whenReady().then(createWindow);
+
+ipcMain.on('notify', (_, message) => {
+  new Notification({title: 'Notification', body: message}).show();
+})
 
 // Handling app closing for macOS
 app.on('window-all-closed', () => {

@@ -1,8 +1,9 @@
-import React from 'react'
+import App from './App';
 import ReactDOM from 'react-dom';
+import React from 'react';
 
-import Comp1 from './Comp1'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.scss'
 
 ReactDOM
-  .render(<Comp1 />, document.getElementById('pingMessenger'));
+  .render(<App />, document.getElementById('chatApp'));
