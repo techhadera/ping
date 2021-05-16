@@ -1,19 +1,18 @@
 import React from "react";
-import ChatsSearch from "../components/ChatsSearch";
-import JoinedChats from "../components/JoinedChats";
-import AvailableChats from "../components/AvailableChats";
-import ViewTitle from "../shared/ViewTitle"
+import JoinedChatsList from "../components/JoinedChatsList";
+import AvailableChatsList from "../components/AvailableChatsList";
+import ViewTitle from "../components/shared/ViewTitle";
 
 export default function Home() {
   return (
-      <div className="row no-gutters fh">
-        <div className="col-3 fh">
-          <JoinedChats />
-        </div>
-        <div className="col-9 fh">
-          <ViewTitle />
-          <AvailableChats />
-        </div>
+    <div className="row no-gutters fh">
+      <div className="col-3 fh">
+        <JoinedChatsList />
       </div>
+      <div className="col-9 fh">
+        <ViewTitle text="Choose your channel" />
+        <AvailableChatsList />
+      </div>
+    </div>
   );
 }
